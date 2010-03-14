@@ -1,0 +1,225 @@
+// Document setup and resets
+
+body
+  margin: 0px
+  padding: 0px
+  font: 13px/18px Helvetica, Arial, sans-serif
+  background-color: #F9F9F9
+  
+
+*
+  margin: 0px
+  padding: 0px
+
+
+p, h1, h2, h3
+  margin-bottom: 10px
+
+
+.spacer
+  clear: both
+  margin: 0
+  padding: 0
+  border: 0
+  height: 0
+  width: 0
+
+
+a
+  color: #53b1c1
+  text-decoration: none
+
+  img
+    border: 0px
+
+  &:visited
+    color: #53b1c1
+    text-decoration: none
+
+  &:hover
+    text-decoration: underline
+
+
+table
+  td, th
+    vertical-align: top
+    padding: 3px
+    text-align: left
+
+
+ol, ul
+  margin-left: 25px
+  margin-top: 10px
+  margin-bottom: 10px
+
+
+// Structure
+
+#container
+  width: 100%
+
+
+#header
+  background-color: #8EC1DA
+  color: white
+  height: 80px
+  padding: 30px 20px 0px 50px
+  margin: 0px
+
+
+#subheading
+  margin-left: 50px
+  font-size: 16px
+
+
+#menu
+  background-color: #53b1c1
+  margin: 0px 0px 20px
+  padding: 8px 5px 8px 50px
+
+
+#home
+  float: left
+
+
+#main
+  padding: 0px 20px 0px 50px
+
+
+#content
+  width: 97%
+  min-height: 450px
+  float: left
+  color: #222222
+
+
+#sidebar
+  width: 32%
+  float: right
+
+
+#footer
+  font-size: 11px
+  margin-left: 50px
+  margin-top: 20px
+  border-top: 2px solid #E4E4E4
+  padding-top: 15px
+  width: 92%
+
+
+// Headers
+
+h1, h2, h3
+  font-weight: bold
+  letter-spacing: -0.5px
+  margin-top: 10px
+  margin-bottom: 10px
+
+
+h1
+  font-size: 26px
+
+
+h2
+  font-size: 22px
+
+
+h3
+  font-size: 18px
+
+
+h4
+  font-size: 16px
+
+
+#header
+  h1, a
+    color: white
+    margin: 0
+    font-size: 32px
+
+// Menu
+
+#menu ul
+  list-style-type: none
+  margin: 0px
+  padding: 0px
+
+  li
+    font-size: 16px
+    float: left
+    margin-right: 12px
+    padding-right: 12px
+    border-right: 1px solid white
+
+    a
+      color: #153A40
+
+      &:hover
+        color: #153A40
+
+
+// Table forms
+
+form
+  width: 100%
+
+table.form
+  border-collapse: collapse
+  width: 80%
+
+  td
+    padding: 10px 8px
+    border-top: 1px solid silver
+
+  .explanation
+    font-size: 10px
+    margin-top: 3px
+    color: #888888
+
+  .label
+    font-size: 10px
+    font-weight: bold
+    text-transform: uppercase
+    color: #555555
+    vertical-align: top
+    width: 30px
+
+    small
+      text-transform: none
+      font-weight: normal
+
+
+textarea
+  width: 95%
+
+
+form h3
+  margin-top: 25px
+
+
+// Status messages
+
+.note-success
+  background-color: #FCFB83
+  margin: 0px 0px 15px
+  padding: 5px 5px 5px 10px
+  font-size: 13px
+  line-height: 17px
+  border-radius: 5px
+  -moz-border-radius: 5px
+  -webkit-border-radius: 5px
+  width: 70%
+
+
+.note-failure
+  background-color: #FCFB83
+  margin: 0px 0px 15px
+  padding: 5px 5px 5px 10px
+  font-size: 13px
+  line-height: 17px
+  border-radius: 5px
+  -moz-border-radius: 5px
+  -webkit-border-radius: 5px
+  width: 70%
+  color: red

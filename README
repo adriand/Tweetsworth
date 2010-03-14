@@ -1,0 +1,29 @@
+
+Explain the project, that it was Tom's idea, and so on.
+
+
+How To Create A Viral Website - Source Code Included!
+=====================================================
+
+In this tutorial, I'm going to focus on key source code elements and design decisions.  I'm not going to outline every single thing I do, or show detailed file structure layouts, or anything of that nature, because you can access the <a href="http://github.com/adriand/Tweetsworth" target="_">project's source code</a> itself if you're interested in that.
+
+We're going to be using the just-released Sinatra 1.0 framework for this project:
+
+<code>gem install sinatra</code>
+
+We're also going to be using Datamapper (with SQLite for development, switching to MySQL later on) for the ORM, HAML, SASS and jQuery for views, and whatever we decide is the best solution for accessing Twitter's API when we get to that point.  Go ahead and install those various gems if you don't have them already.
+
+Note that I've never had the opportunity to use SASS before, so please chime in if you see instances where I could improve the way I use it.
+
+<h2>The Foundation</h2>
+
+The meat of the app is tweetsworth.rb.  After building several Sinatra apps, I've developed a preference for a simple file structure and a simple base template for the main application (what you might call the application controller, if you're accustomed to Rails).
+
+The file structure consists of the root folder, where the code for models and the main application goes, plus a folder for the database (/db), static assets (/public) and views (/views).
+
+My application template looks like this (note the comments, which contain notes on some design decisions and idiosyncrasies of the technologies used:)
+
+<script src="http://gist.github.com/332016.js?file=tweetsworth_base.rb"></script>
+
+Next up: creating a quick and dirty layout that's good enough for us to build a functional prototype.  Once again, I rely on a few simple files that I've used and reused time and again for these purposes.  We're also going to drop in jQuery 1.4 while we're at it.
+
