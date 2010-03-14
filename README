@@ -1,11 +1,25 @@
 
 Explain the project, that it was Tom's idea, and so on.
 
+Standard tutorials tend to show you how to build blogs.  I've always felt that was rather pointless.  Why wouldn't you just use WordPress?
+
+Sure, you can learn a lot from building something familiar, but it's more fun to do something different.  That's why, in this tutorial, we're going to show you how to:
+
+<ul>
+  <li>Build a slick little web application that integrates with Twitter</li>
+  <li>Hack APIs by using cURL and regular expressions instead of API wrappers and XML parsers (though we'll come to rely on those too)</li>
+  <li>Learn to use <em>simple, powerful</em> tools like Sinatra and Datamapper instead of large frameworks like Rails to build small, focused web applications</li>
+  <li>Spread your web app using social media (we'll try to make it go viral)</li>
+</ul>
+
+
+
+
 
 How To Create A Viral Website - Source Code Included!
 =====================================================
 
-In this tutorial, I'm going to focus on key source code elements and design decisions.  I'm not going to outline every single thing I do, or show detailed file structure layouts, or anything of that nature, because you can access the <a href="http://github.com/adriand/Tweetsworth" target="_">project's source code</a> itself if you're interested in that.
+In this tutorial, I'm going to focus on key source code elements and design decisions.  I'm not going to outline every single thing I do, or show detailed file structure layouts, or anything of that nature, because you can access the <a href="http://github.com/adriand/Tweetsworth">project's source code</a> itself if you're interested in that.
 
 We're going to be using the just-released Sinatra 1.0 framework for this project:
 
@@ -14,6 +28,7 @@ We're going to be using the just-released Sinatra 1.0 framework for this project
 We're also going to be using Datamapper (with SQLite for development, switching to MySQL later on) for the ORM, HAML, SASS and jQuery for views, and whatever we decide is the best solution for accessing Twitter's API when we get to that point.  Go ahead and install those various gems if you don't have them already.
 
 Note that I've never had the opportunity to use SASS before, so please chime in if you see instances where I could improve the way I use it.
+
 
 <h2>The Foundation</h2>
 
@@ -26,4 +41,27 @@ My application template looks like this (note the comments, which contain notes 
 <script src="http://gist.github.com/332016.js?file=tweetsworth_base.rb"></script>
 
 Next up: creating a quick and dirty layout that's good enough for us to build a functional prototype.  Once again, I rely on a few simple files that I've used and reused time and again for these purposes.  We're also going to drop in jQuery 1.4 while we're at it.
+
+
+
+<h2>Getting User Information From Twitter</h2>
+
+Although our goal is to always show a value of zero for the user's account, it will be more convincing - and also more fun to code - if we actually do connect to their Twitter account and retrieve information that we use as the basis for the valuation.  For now, we'll base the valuation on their number of followers and status updates.  This will also lay the groundwork for further integration later on if we like.
+
+Making things nice and easy for us, the <a href="http://apiwiki.twitter.com/Twitter-REST-API-Method%3A-users%C2%A0show">Twitter API call for retrieving information on a user</a> does not require authentication.  You can get all the info you need just using cURL:
+
+<code>curl http://api.twitter.com/1/users/show.xml?screen_name=adriandz</code>
+
+This returns XML with all the information we're looking for.
+
+Given how simple this is, three ways of getting this information in our app spring to mind.  The first is to use a Twitter-specific gem like <a href="http://github.com/hayesdavis/grackle">Grackle</a> or <a href="http://twitter.rubyforge.org/">twitter (the gem)</a>.  However, our requirements are so simple that we don't need something with a lot of functionality, nor do we need any OAuth or even basic authentication.
+
+The second is to use a wrapper that will let us simplify the way we access this API.  My current preference for this is <a href="http://httparty.rubyforge.org/">HTTParty</a>.
+
+The third is to just hack something quick and dirty that works with the bare minimum of external requirements.  We've already seen how using cURL lets us get the information we need in XML format.  We can actually skip utilizing an XML parser like Hpricot and just get the data using a regular expression:
+
+<script src="http://gist.github.com/332181.js?file=twitter_info_via_curl.rb"></script>
+
+That's about as simple as it gets.
+
 
