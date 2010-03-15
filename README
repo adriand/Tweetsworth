@@ -40,7 +40,13 @@ My application template looks like this (note the comments, which contain notes 
 
 <script src="http://gist.github.com/332016.js?file=tweetsworth_base.rb"></script>
 
-Next up: creating a quick and dirty layout that's good enough for us to build a functional prototype.  Once again, I rely on a few simple files that I've used and reused time and again for these purposes.  We're also going to drop in jQuery 1.4 while we're at it.
+Next up: creating a quick and dirty layout that's good enough for us to build a functional prototype.  Once again, I rely on a few simple files that I've used and reused time and again for these purposes, making a few tweaks (centering the page and ripping off Twitter's background color).  We're also going to drop in jQuery 1.4 while we're at it.
+
+The comments in this layout demonstrate two little tricks.  By using erb instead of HAML for the Javascript file, we retain Javascript syntax highlighting in our editor of choice, TextMate.  We also implement a simple version of Rails' flash messages, which are frequently useful.
+
+Here's the basic layout, which is sure to change as we continue to develop the application (and particularly when we integrate a proper design):
+
+<script src="http://gist.github.com/332418.js?file=layout.haml"></script>
 
 
 
