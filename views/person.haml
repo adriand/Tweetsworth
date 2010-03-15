@@ -1,0 +1,5 @@
+#info
+  %h1
+    %img{:src => @person.profile_image_url, :style => "vertical-align: middle; padding-right: 20px;"}
+    = @person.name
+  %h3= "#{@person.followers_count} followers. #{@person.statuses_count} tweets. User since #{@person.joined_twitter_at.strftime("%B %d %Y")}."

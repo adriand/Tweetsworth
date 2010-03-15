@@ -50,17 +50,37 @@ get '/style.css' do
 end
 
 post '/value' do
-  username = params[:username]
-  if username && username != ""
-    @info = Twitter.get('/1/users/show.json', :query => { :screen_name => username })
+  screen_name = params[:screen_name]
+  if screen_name && screen_name != ""
+    @info = Twitter.get('/1/users/show.json', :query => { :screen_name => screen_name })
     if @info['error']
       redirect "/?failure=There was an error retrieving your account information. Twitter says: #{info['error']}."
     else
-      haml :index
-    end
+      # Since we've now successfully retrieved information on a user account, we'll either look up or save this user in our
+      # database.
+      person = Person.first(:screen_name => screen_name)
+      unless person
+        person = Person.new(
+          :screen_name => screen_name, 
+          :name => @info['name'], 
+          :joined_twitter_at => DateTime.parse(@info['created_at'])
+        )
+      end
+      # These attributes can change over time
+      person.followers_count, person.statuses_count, person.profile_image_url = @info['followers_count'], @info['statuses_count'], @info['profile_image_url']
+      person.save
+      redirect "/w/#{person.screen_name}"
+    end    
   else
     redirect "/?failure=Please enter a Twitter username to start the valuation process."
   end
+end
+
+# The shorter the url, the better for Twitter
+get '/w/:screen_name' do
+  @person = Person.first(:screen_name => params[:screen_name])
+  @page_title = @person.name
+  haml :person
 end
 
 helpers do
