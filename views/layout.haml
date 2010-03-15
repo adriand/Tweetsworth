@@ -3,10 +3,13 @@
   %head
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }/
     %title
-      = "#{@page_title} &plusmn;"  if @page_title
+      = "#{@page_title} &plusmn;" if @page_title
       Tweetsworth
     %link{ :href => "/style.css", :title => "no title", :rel => "stylesheet", :media => "screen", :type => "text/css", :charset => "utf-8" }
     %script{ :type => "text/javascript", :src => "/jquery.js" }
+    / Drop in an erb file that just contains Javascript - that way, any Javascript we need is contained cleanly in a
+    / separate file, and we can also wrap it in <script type="text/javascript"> tags: which in our editor of choice,
+    / TextMate, is the best way to get syntax highlighting.
     = erb :layout_js
     = @js
   %body
@@ -15,15 +18,20 @@
         %a{:href => "/"}
           %h1 Tweetsworth
       #main
+        / Checking for these params means we can show messages to the user by tacking on a "failure" or "notice"
+        / parameter.  E.g. on localhost: http://localhost:4567/?notice=Your account was verified successfully.
+        / That will display a notice with an account message in the layout.  This is the quick and dirty version of
+        / Rails' flash messages.  In your application, use this as follows:
+        / redirect "/new?failure=You failed to complete all required fields."
+        / Note that since this is a redirect, the contents of unsaved instance variables will be lost: that's acceptable
+        / for a simple application, but not for anything with more complex forms.
         - if params[:notice]
-          %div.note-success
-            = params[:notice]
+          .note.notice= params[:notice]
         - if params[:failure]
-          %div.note-failure
-            = params[:failure]
+          .note.failure= params[:failure]
         
         = yield
-
+      
       .spacer/
     #footer
       %p

@@ -44,6 +44,8 @@ Next up: creating a quick and dirty layout that's good enough for us to build a 
 
 
 
+
+
 <h2>Getting User Information From Twitter</h2>
 
 Although our goal is to always show a value of zero for the user's account, it will be more convincing - and also more fun to code - if we actually do connect to their Twitter account and retrieve information that we use as the basis for the valuation.  For now, we'll base the valuation on their number of followers and status updates.  This will also lay the groundwork for further integration later on if we like.
@@ -62,6 +64,19 @@ The third is to just hack something quick and dirty that works with the bare min
 
 <script src="http://gist.github.com/332181.js?file=twitter_info_via_curl.rb"></script>
 
-That's about as simple as it gets.
+If we run this from the command line like:
+
+<code>ruby twitter_info_via_curl.rb tomcreighton</code>
+
+We'll get:
+
+Followers: 83<br />
+Statuses: 384
+
+That's about as simple as it gets.  This is a nice technique for hacking APIs when the data you are interested in is simple, easy to parse, and doesn't include collections of items.  I've even used this for hacking SOAP services, by passing in the -H parameter to cURL:
+
+<code>-H "Content-Type: application/soap+xml;charset=UTF-8"</code>
+
+
 
 

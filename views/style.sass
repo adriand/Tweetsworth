@@ -2,10 +2,10 @@
 
 body
   margin: 0px
-  padding: 0px
+  padding: 20px 0px
   font: 13px/18px Helvetica, Arial, sans-serif
-  background-color: #F9F9F9
-  
+  background-color: #8EC1DA
+  text-align: center
 
 *
   margin: 0px
@@ -56,14 +56,15 @@ ol, ul
 // Structure
 
 #container
-  width: 100%
-
+  width: 800px
+  text-align: left
+  margin-left: auto
+  margin-right: auto
 
 #header
-  background-color: #8EC1DA
   color: white
-  height: 80px
-  padding: 30px 20px 0px 50px
+  height: 60px
+  padding: 30px 20px 0px 0px
   margin: 0px
 
 
@@ -83,8 +84,9 @@ ol, ul
 
 
 #main
-  padding: 0px 20px 0px 50px
-
+  margin-bottom: 30px
+  padding: 20px
+  background-color: white
 
 #content
   width: 97%
@@ -100,11 +102,9 @@ ol, ul
 
 #footer
   font-size: 11px
-  margin-left: 50px
-  margin-top: 20px
   border-top: 2px solid #E4E4E4
-  padding-top: 15px
-  width: 92%
+  padding-top: 20px
+  width: 100%
 
 
 // Headers
@@ -136,7 +136,7 @@ h4
   h1, a
     color: white
     margin: 0
-    font-size: 32px
+    font-size: 56px
 
 // Menu
 
@@ -200,8 +200,7 @@ form h3
 
 // Status messages
 
-.note-success
-  background-color: #FCFB83
+.note
   margin: 0px 0px 15px
   padding: 5px 5px 5px 10px
   font-size: 13px
@@ -209,17 +208,10 @@ form h3
   border-radius: 5px
   -moz-border-radius: 5px
   -webkit-border-radius: 5px
-  width: 70%
+  
+  &.notice
+    background-color: #FCFB83
 
-
-.note-failure
-  background-color: #FCFB83
-  margin: 0px 0px 15px
-  padding: 5px 5px 5px 10px
-  font-size: 13px
-  line-height: 17px
-  border-radius: 5px
-  -moz-border-radius: 5px
-  -webkit-border-radius: 5px
-  width: 70%
-  color: red
+  &.failure
+    background-color: #FFB5A8
+    color: red
