@@ -99,7 +99,7 @@ We'll also save valid Twitter usernames in our database so that we can use them,
 
 For that, we need a model:
 
-
+<script src="http://gist.github.com/333150.js?file=Person.rb"></script>
 
 Note that as soon as I've created this model, I stop the application from running.  Then, in the main app, I comment out the DataMapper upgrade method:
 
@@ -113,11 +113,11 @@ Then I start the application back up again.  This will add in a table for my new
 
 We also need a form:
 
-
+<script src="http://gist.github.com/333151.js?file=form.haml"></script>
 
 And lastly, we need some logic in the main application to tie it all together:
 
-
+<script src="http://gist.github.com/333152.js?file=controlled.rb"></script>
 
 
 
