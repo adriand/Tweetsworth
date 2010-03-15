@@ -1,2 +1,18 @@
-%h1 The First 100% Guaranteed Accurate Twitter Account Valuator
+%h3 Calculate the value of your Twitter account instantly with
+%h1 The World's First 100% Accurate Twitter Valuation Tool 
 
+%p
+  Interested in selling your followers?  Curious about the ongoing income you could earn by advertising 
+  using your Twitter account?  You don't need to wonder any more.
+
+%form{:action => "/value", :method => "post"}
+  Enter your Twitter username:
+  %input{:name => "username", :type => "text"}
+  %input{:type => "submit", :value => "Submit"}
+  
+- if @info
+  #info
+    %h1
+      %img{:src => @info['profile_image_url'], :style => "vertical-align: middle;"}
+      = @info['name']
+    %h3= "#{@info['followers_count']} followers. #{@info['statuses_count']} tweets. User since #{@info['created_at']}."

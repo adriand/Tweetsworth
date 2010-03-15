@@ -4,7 +4,9 @@ require 'rubygems' unless defined? ::RubyGems
 require 'sinatra' unless defined? ::Sinatra
 require 'rack' # more on the decision to include this below
 require 'dm-core'
+require 'dm-timestamps'
 require 'haml'
+require 'httparty'
 require 'ruby-debug'
 
 # If you want changes to your application to appear in development mode without having to 
@@ -45,6 +47,20 @@ end
 get '/style.css' do
   response['Content-Type'] = 'text/css; charset=utf-8'
   sass :style
+end
+
+post '/value' do
+  username = params[:username]
+  if username && username != ""
+    @info = Twitter.get('/1/users/show.json', :query => { :screen_name => username })
+    if @info['error']
+      redirect "/?failure=There was an error retrieving your account information. Twitter says: #{info['error']}."
+    else
+      haml :index
+    end
+  else
+    redirect "/?failure=Please enter a Twitter username to start the valuation process."
+  end
 end
 
 helpers do

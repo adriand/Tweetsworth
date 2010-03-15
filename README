@@ -48,8 +48,7 @@ Here's the basic layout, which is sure to change as we continue to develop the a
 
 <script src="http://gist.github.com/332418.js?file=layout.haml"></script>
 
-
-
+At this point, everything is in place for us to be able to begin building some real functionality (if you're interested, this point is marked by commit <a href="http://github.com/adriand/Tweetsworth/tree/1f977aae3aba216cf80785f7090e74a67df08e9b">1f977aae3aba216cf80785f7090e74a67df08e9b</a>).
 
 
 <h2>Getting User Information From Twitter</h2>
@@ -79,9 +78,47 @@ We'll get:
 Followers: 83<br />
 Statuses: 384
 
+Supply your Twitter username as the last argument (in place of <em>tomcreighton</em>) if you'd like to try this on your own account.
+
 That's about as simple as it gets.  This is a nice technique for hacking APIs when the data you are interested in is simple, easy to parse, and doesn't include collections of items.  I've even used this for hacking SOAP services, by passing in the -H parameter to cURL:
 
 <code>-H "Content-Type: application/soap+xml;charset=UTF-8"</code>
+
+That said, although this works for our purposes, it won't serve us well if we want to add more interesting Twitter functionality later on.  We'll use HTTParty instead.
+
+Helpfully, the <a href="http://httparty.rubyforge.org/">documentation for HTTParty</a> begins with a Twitter example, although it uses authentication, which we don't need.  Let's add httparty to the list of required gems (require 'httparty') and code up the simplest possible Twitter client that will be useful for our purposes, which we will drop into models.rb:
+
+<script src="http://gist.github.com/332459.js?file=twitter.rb"></script>
+
+
+<h2>Putting It Together</h2>
+
+Now that we've figured out how to retrieve user information from Twitter, it's time to start putting it all together.  We're going to need to present the user with a form, retrieve their user information when they submit their Twitter username (or show a failure message if we cannot do so), and then start displaying values.
+
+We'll also save valid Twitter usernames in our database so that we can use them, for instance to show other people whose accounts have recently been (under) valued, or perhaps so that we can send them a tweet later on about the app.
+
+For that, we need a model:
+
+
+
+Note that as soon as I've created this model, I stop the application from running.  Then, in the main app, I comment out the DataMapper upgrade method:
+
+<code># DataMapper.auto_upgrade!</code>
+
+And uncomment the migrate method:
+
+<code>DataMapper.auto_migrate!</code>
+
+Then I start the application back up again.  This will add in a table for my new model.  Subsequently, I change these lines back the way they were, so that we're back to upgrading.
+
+We also need a form:
+
+
+
+And lastly, we need some logic in the main application to tie it all together:
+
+
+
 
 
 
