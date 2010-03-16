@@ -80,9 +80,28 @@ end
 get '/w/:screen_name' do
   @person = Person.first(:screen_name => params[:screen_name])
   @page_title = @person.name
+  @js = erb :person_js
   haml :person
 end
 
 helpers do
+  
+  def progress_statements
+    [
+      ["Calculating overall quality of tweets...", "Mediocre"],
+      ["Determining number of influential followers...", "Low"],
+      ["Measuring degree of intellectual content...", "Minimal"],
+      ["Assessing vocabulary level...", "Seventh grade"]
+    ]
+  end
+  
+  def results
+    [
+      ["Likelihood of using your Twitter account for ongoing advertising income:", "0.0%"],
+      ["Number of tweets suitable for monetization:", "0"],
+      ["Accumulated tweet to profit ratio:", "0/0"],
+      ["Value of your followers:", "$0.00"]
+    ]
+  end
   
 end

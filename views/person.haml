@@ -1,5 +1,33 @@
-#info
-  %h1
-    %img{:src => @person.profile_image_url, :style => "vertical-align: middle; padding-right: 20px;"}
-    = @person.name
-  %h3= "#{@person.followers_count} followers. #{@person.statuses_count} tweets. User since #{@person.joined_twitter_at.strftime("%B %d %Y")}."
+%h1
+  %img{:src => @person.profile_image_url, :style => "vertical-align: middle; padding-right: 20px;"}
+  = @person.name
+%h3= "#{@person.followers_count} followers. #{@person.statuses_count} tweets. User since #{@person.joined_twitter_at.strftime("%B %d %Y")}."
+
+.spacer{:style => "height: 20px;"}
+
+%table#progress
+  - progress_statements.each_with_index do |statement, i|
+    %tr{:id => "statement_#{i}"}
+      %td= statement.first
+      %th= statement.last
+
+#results
+  %table
+    %tr
+      %td
+        %h1 Your Results
+    - results.each do |result|
+      %tr
+        %td= result.first
+        %th= result.last
+    %tr
+      %td{:style => "border-top: 2px solid black; padding-top: 15px;"}
+        %strong TOTAL VALUE OF YOUR TWITTER ACCOUNT:
+      %th{:style => "border-top: 2px solid black; padding-top: 15px;"} $0.00
+  
+  .spacer{:style => "height: 20px;"}
+  
+  %h3 You can devalue your friends Twitter accounts too!
+  
+  %p
+    %a{:href => "#"} Just Tweet this.

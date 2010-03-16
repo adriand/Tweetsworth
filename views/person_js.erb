@@ -1,0 +1,30 @@
+<script type="text/javascript">
+	$(function() {
+	  function show_progress() {
+	    // hide the last progress statement
+	    if (current_progress > 0) {
+	      $("#statement_" + (current_progress - 1)).hide();
+	    }
+	    tr = $("#statement_" + current_progress);
+	    $(tr.children()[0]).fadeIn('fast', function() {
+	      $(tr.children()[1]).show();
+	    });  
+	    current_progress++;
+	  }
+	  
+	  function show_results() {
+	    $("#progress").hide();
+	    $("#results").slideDown();
+	  }
+	  
+	  delay = 0;
+	  $("#progress tr").each(function (index, tr) {
+	    setTimeout(show_progress, delay);
+	    delay = delay + 800;
+	  });
+    
+    setTimeout(show_results, delay);
+	  
+	  var current_progress = 0;
+	});
+</script>

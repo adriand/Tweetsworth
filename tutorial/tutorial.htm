@@ -118,7 +118,32 @@ And lastly, we need some logic in the main application to tie it all together:
 
 <script src="http://gist.github.com/333152.js?file=controlled.rb"></script>
 
-At this point, we are successfully retrieving information from Twitter, storing it in our database, and redirecting the user to a page where they can finally get an accurate estimate of just how valuable their Twitter account really is.
+At this point, we are successfully retrieving information from Twitter, storing it in our database, and redirecting the user to a page where they can finally get an accurate estimate of just how valuable their Twitter account really is.  It's time for the fun part to begin.
+
+
+<h2>Insulting People</h2>
+
+After redirecting to the person's individual page, we're going to show them their results.  To make things convincing, we're going to display things as if we are calculating them on the fly, complete with progress indicators.
+
+We're going to display three things.  First, a series of messages indicating progress, with each one appearing one after another, replacing the one displayed previously.  These will be in the form: "Measuring vocabulary level...", a pause, then "Seventh grade".
+
+Second, when the progress messages have completed displaying, we'll slide out a results panel.  These results will be in the form: "Likelihood that you'll be able to retire on income from Twitter stream: 0%".
+
+And finally, we'll display a paragraph at the end with a disparaging summary of the overall quality of their followers and tweets, followed by some encouragement to sucker their friends by tweeting about the site.
+
+Let's start with the progress messages.  If you were paying attention to the little details in the layout file we created, you may have noticed that we put:
+
+<code>= @js</code>
+
+in the head section of the document.  This allows us, from within the main application, to specify a file with Javascript in it that will be rendered in this part of the document, as follows:
+
+<code>@js = erb :person_js</code>
+
+This is the logical equivalent of doing <code>content_for :scripts do</code> in conjunction with <code>yield :scripts</code> in Rails.  In this case, we've specified an erb file called person_js.erb to contain our Javascript for this view.
+
+We'll also specify some progress statements in our main application file, in the helpers section.  This will let us swap out progress statements easily later on, which we'll need to do since these are just placeholders:
+
+<script src="http://gist.github.com/334355.js?file=progress_statements.rb"></script>
 
 
 
