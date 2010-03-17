@@ -83,6 +83,10 @@ get '/w/:screen_name' do
   haml :person
 end
 
+not_found do
+  "Page not found!"
+end
+
 private
 
   def progress_statements
