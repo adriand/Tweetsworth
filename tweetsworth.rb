@@ -22,8 +22,7 @@ configure :development do
 end
 
 configure :production do
-  # Put your production database connection string here.
-  
+  require '../shared/config/production.rb'
 end
 
 # This is such a simple application that we likely don't need a separate file for models, 
@@ -37,8 +36,8 @@ require 'models'
 # production environment (this may be a surprise to Rails users).  I tend to use auto_migrate! 
 # as I build the app and make major db changes, but once I have things pretty stable
 # I switch to auto_upgrade!.
-DataMapper.auto_upgrade!
-# DataMapper.auto_migrate!
+#DataMapper.auto_upgrade!
+DataMapper.auto_migrate!
 
 get '/' do
   haml :index
