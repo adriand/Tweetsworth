@@ -3,7 +3,7 @@ require 'sinatra'
 
 set(:run, false)
 set(:env, 'production')
-set :root, File.dirame(__FILE_)
+
 
 run Sinatra::Application
 
