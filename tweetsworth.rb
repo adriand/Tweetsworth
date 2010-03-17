@@ -22,11 +22,7 @@ configure :development do
 end
 
 configure :production do
-  require '../shared/config/production.rb'
-  
-  not_found do
-    'This is nowhere to be found'
-  end
+  # require '../shared/config/production.rb'
 end
 
 # This is such a simple application that we likely don't need a separate file for models, 
