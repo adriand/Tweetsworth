@@ -3,7 +3,7 @@
 body
   margin: 0px
   padding: 20px 0px
-  font: 13px/18px Helvetica, Arial, sans-serif
+  font: 16px/20px Helvetica, Arial, sans-serif
   background-color: #8EC1DA
   text-align: center
 
@@ -216,18 +216,27 @@ form h3
     color: red
 
 // Person view
-table#progress
-  width: 70%
+#progress
+  img.loader
+    float: left
+    padding-right: 20px
+
+  table
+    float: left
+    width: 80%
+    
+    td
+      width: 55%
   
-  td
-    width: 60%
-  
-  td, th
-    display: none
+    td, th
+      display: none
 
 #results
   display: none
 
+  big
+    font-size: 20px
+  
   table
     width: 100%
   
@@ -236,7 +245,7 @@ table#progress
       vertical-align: center
   
     td
-      width: 80%
+      width: 50%
       font-size: 16px
     
     th

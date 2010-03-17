@@ -6,7 +6,7 @@
 	      $("#statement_" + (current_progress - 1)).hide();
 	    }
 	    tr = $("#statement_" + current_progress);
-	    $(tr.children()[0]).fadeIn('fast', function() {
+	    $(tr.children()[0]).fadeIn('slow', function() {
 	      $(tr.children()[1]).show();
 	    });  
 	    current_progress++;
@@ -18,9 +18,9 @@
 	  }
 	  
 	  delay = 0;
-	  $("#progress tr").each(function (index, tr) {
+	  $("#progress table tr").each(function (index, tr) {
 	    setTimeout(show_progress, delay);
-	    delay = delay + 800;
+	    delay = delay + 1400;
 	  });
     
     setTimeout(show_results, delay);

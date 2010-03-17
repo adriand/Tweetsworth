@@ -84,24 +84,15 @@ get '/w/:screen_name' do
   haml :person
 end
 
-helpers do
-  
+private
+
   def progress_statements
     [
-      ["Calculating overall quality of tweets...", "Mediocre"],
-      ["Determining number of influential followers...", "Low"],
-      ["Measuring degree of intellectual content...", "Minimal"],
-      ["Assessing vocabulary level...", "Seventh grade"]
+      ["Evaluating Followers", "Questionable"],
+      ["Analyzing Retweet Recursion Depth", "Substantial"],
+      ["Syntax, Grammar and Vocabulary Analysis", "Seventh grade"],      
+      ["Determining Mediated Collective Influence", "Fourth degree"],
+      ["Resolving Social Matrix Lattices", "Semi-entwined"],
+      ["Reticulating Splines", "Bezier"]
     ]
   end
-  
-  def results
-    [
-      ["Likelihood of using your Twitter account for ongoing advertising income:", "0.0%"],
-      ["Number of tweets suitable for monetization:", "0"],
-      ["Accumulated tweet to profit ratio:", "0/0"],
-      ["Value of your followers:", "$0.00"]
-    ]
-  end
-  
-end

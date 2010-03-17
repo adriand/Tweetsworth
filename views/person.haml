@@ -1,33 +1,59 @@
 %h1
   %img{:src => @person.profile_image_url, :style => "vertical-align: middle; padding-right: 20px;"}
   = @person.name
-%h3= "#{@person.followers_count} followers. #{@person.statuses_count} tweets. User since #{@person.joined_twitter_at.strftime("%B %d %Y")}."
 
 .spacer{:style => "height: 20px;"}
 
-%table#progress
-  - progress_statements.each_with_index do |statement, i|
-    %tr{:id => "statement_#{i}"}
-      %td= statement.first
-      %th= statement.last
+#progress
+  %img.loader{:src => "/loader.gif"}
+  %table
+    - progress_statements.each_with_index do |statement, i|
+      %tr{:id => "statement_#{i}"}
+        %td= statement.first
+        %th= statement.last
+  .spacer
 
 #results
-  %table
-    %tr
-      %td
-        %h1 Your Results
-    - results.each do |result|
-      %tr
-        %td= result.first
-        %th= result.last
-    %tr
-      %td{:style => "border-top: 2px solid black; padding-top: 15px;"}
-        %strong TOTAL VALUE OF YOUR TWITTER ACCOUNT:
-      %th{:style => "border-top: 2px solid black; padding-top: 15px;"} $0.00
+  %h3 Finished calculation! Your Twitter account is worth
+  %h1 $0.00
+  %h3 Rating: Inconsequential
+  
+  .spacer{:style => "height: 25px;"}
+  
+  %p Here are the calculations Tweetsworth used:
+  
+  %p
+    Total Tweets:
+    %big
+      %strong= @person.statuses_count
+    %br/
+    %small You sure like the sound of your own voice.
+    
+  %p
+    Followers:
+    %big
+      %strong= @person.followers_count
+    %br/
+    %small That's like, what, a small village? A hamlet? Way to escape the farmstead, chief.
+    
+  %p
+    Tweeting Since:
+    %big
+      %strong= @person.joined_twitter_at.strftime("%B %d %Y")
+    %br/
+    %small Words thrown into a void, my friend. Sad, really.
+    
+  %p
+    Retweets:
+    %big
+      %strong I dunno.
+    %br/
+    %small Your retweets are so boring our algorithm fell asleep.
   
   .spacer{:style => "height: 20px;"}
   
-  %h3 You can devalue your friends Twitter accounts too!
-  
   %p
-    %a{:href => "#"} Just Tweet this.
+    %a{:href => "#"} SHARE THIS CALCULATION.
+    
+  %p
+    %a{:href => "#"} SEND TO A FRIEND.
