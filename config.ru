@@ -4,4 +4,4 @@ require 'sinatra'
 Sinatra::Base.set(:run, false)
 Sinatra::Base.set(:env, ENV['RACK_ENV'])
 
-run Sinatra.application
+run Sinatra::Application
