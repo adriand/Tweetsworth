@@ -8,6 +8,7 @@ require 'dm-timestamps'
 require 'haml'
 require 'httparty'
 require 'ruby-debug'
+require 'logger'
 
 # If you want changes to your application to appear in development mode without having to 
 # restart the application, you need something that will reload your app automatically. 
@@ -22,7 +23,8 @@ configure :development do
 end
 
 configure :production do
-  # require '../shared/config/production.rb'
+  require '../shared/config/production.rb'
+  LOGGER = Logger.new("log/sinatra.log") 
 end
 
 # This is such a simple application that we likely don't need a separate file for models, 
