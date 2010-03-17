@@ -9,7 +9,7 @@ require 'haml'
 require 'httparty'
 require 'ruby-debug'
 require 'logger'
-
+set :root, File.dirame(__FILE_)
 # If you want changes to your application to appear in development mode without having to 
 # restart the application, you need something that will reload your app automatically. 
 # There are solutions out there (like Shotgun) but these are very slow. It's far quicker 
