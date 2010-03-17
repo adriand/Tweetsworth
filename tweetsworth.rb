@@ -86,7 +86,7 @@ get '/w/:screen_name' do
 end
 
 not_found do
-  "Page not found!"
+  haml :'404'
 end
 
 private
