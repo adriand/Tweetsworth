@@ -12,8 +12,7 @@ role :app, "app1.factore.ca", "app2.factore.ca"
 role :db, "app1.factore.ca", :primary => true
 
 before("deploy:cleanup") { set :user, "root" }
-after("deploy:update_code") { run "cd #{current_release}; cp config/database.yml.template config/database.yml" }
-
+# after("deploy:update_code") { run "cd #{current_release}; cp config/database.yml.template config/database.yml" }
 # after("deploy:restart") { run "cd /var/apps/#{application}/current; rake forge:expire_cache RAILS_ENV=production;" }
 
 namespace :deploy do
