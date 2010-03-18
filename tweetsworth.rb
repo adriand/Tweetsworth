@@ -39,8 +39,8 @@ require 'models'
 # production environment (this may be a surprise to Rails users).  I tend to use auto_migrate! 
 # as I build the app and make major db changes, but once I have things pretty stable
 # I switch to auto_upgrade!.
-DataMapper.auto_upgrade!
-#DataMapper.auto_migrate!
+#DataMapper.auto_upgrade!
+DataMapper.auto_migrate!
 
 get '/' do
   haml :index
