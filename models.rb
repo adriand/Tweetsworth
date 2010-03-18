@@ -12,7 +12,7 @@ class Person
   property :id, Serial
   property :screen_name, String, :unique_index => true
   property :name, String
-  property :profile_image_url, String
+  property :profile_image_url, Text
   # storing these will allow us to rank this person against other users
   # if we wish, we can also use these as cached results from Twitter if the user
   # returns to the site within a certain amount of time
