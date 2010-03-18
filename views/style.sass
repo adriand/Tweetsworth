@@ -1,11 +1,11 @@
 // Document setup and resets
 
 body
+  font: 13px/18px Helvetica, Arial, sans-serif
   margin: 0px
-  padding: 20px 0px
-  font: 16px/20px Helvetica, Arial, sans-serif
-  background-color: #8EC1DA
-  text-align: center
+  padding: 0px
+  background: #3e9dd4 url(/gradient.gif) repeat-x fixed left bottom
+  color: #FFFFFF
 
 *
   margin: 0px
@@ -26,175 +26,110 @@ p, h1, h2, h3
 
 
 a
-  color: #53b1c1
+  color: #3e9dd4
+  font-weight: bold
   text-decoration: none
-
-  img
-    border: 0px
-
-  &:visited
-    color: #53b1c1
-    text-decoration: none
 
   &:hover
     text-decoration: underline
 
-
-table
-  td, th
-    vertical-align: top
-    padding: 3px
-    text-align: left
-
-
-ol, ul
-  margin-left: 25px
-  margin-top: 10px
-  margin-bottom: 10px
+  &:visited
+    color: #3e9dd4
+    
+  img
+    border: 0px
 
 
 // Structure
 
-#container
-  width: 800px
-  text-align: left
-  margin-left: auto
-  margin-right: auto
-
 #header
-  color: white
-  height: 60px
-  padding: 30px 20px 0px 0px
   margin: 0px
+  padding: 40px 0px 20px
 
-
-#subheading
-  margin-left: 50px
-  font-size: 16px
-
-
-#menu
-  background-color: #53b1c1
-  margin: 0px 0px 20px
-  padding: 8px 5px 8px 50px
-
-
-#home
-  float: left
-
-
-#main
-  margin-bottom: 30px
-  padding: 20px
-  background-color: white
 
 #content
-  width: 97%
-  min-height: 450px
-  float: left
-  color: #222222
-
-#sidebar
-  width: 32%
-  float: right
+  background: #FFFFFF
+  color: #333333
+  padding: 30px
+  margin: 0px
+  font-size: 15px
+  line-height: 18px
 
 
 #footer
-  font-size: 11px
-  border-top: 2px solid #E4E4E4
-  padding-top: 20px
-  width: 100%
+  font-size: 10px
+  line-height: 10px
+  margin: 0px
+  padding: 20px 0px 50px
+
+
+#container
+  margin: 0px auto
+  padding: 0px
+  width: 800px
 
 
 // Headers
 
-h1, h2, h3
-  font-weight: bold
-  letter-spacing: -0.5px
-  margin-top: 10px
-  margin-bottom: 20px
-
-
 h1
-  font-size: 26px
-
+  font-size: 30px
+  line-height: 48px
+  margin: 0px 0px 20px
+  padding: 0px
+  font-weight: bold
 
 h2
-  font-size: 22px
-
-
-h3
   font-size: 18px
-
-
-h4
-  font-size: 16px
-
-
-#header
-  h1, a
-    color: white
-    margin: 0
-    font-size: 56px
-
-// Menu
-
-#menu ul
-  list-style-type: none
+  line-height: 18px
   margin: 0px
-  padding: 0px
-
-  li
-    font-size: 16px
-    float: left
-    margin-right: 12px
-    padding-right: 12px
-    border-right: 1px solid white
-
-    a
-      color: #153A40
-
-      &:hover
-        color: #153A40
+  padding: 20px 0px 0px
 
 
-// Table forms
+// Other content
 
-form
-  width: 100%
+.callout
+  background: #E8E8E8
+  margin: 0px 0px 20px
+  padding: 15px
+  font-size: 15px
+  line-height: 15px
 
-table.form
-  border-collapse: collapse
-  width: 80%
+  h1
+    font-size: 48px
+    line-height: 56px
+    color: #000000
+    margin: 0px
+    padding: 0px
+
+
+table.data
+  font-size: 13px
+  line-height: 15px
+  font-weight: normal
+  margin: 0px
+  padding: 10px 0px 0px
 
   td
-    padding: 10px 8px
-    border-top: 1px solid silver
+    margin: 0px
+    padding: 8px 0px
+    width: 50%
 
-  .explanation
-    font-size: 10px
-    margin-top: 3px
-    color: #888888
+  h3
+    color: #666666
+    font-size: 16px
+    font-weight: normal
+    margin: 0px
+    padding: 0px 0px 5px
 
-  .label
-    font-size: 10px
-    font-weight: bold
-    text-transform: uppercase
-    color: #555555
-    vertical-align: top
-    width: 30px
+    strong
+      color: #000000
+      font-size: 18px
+      font-weight: bold
 
-    small
-      text-transform: none
-      font-weight: normal
-
-
-textarea
-  width: 95%
-
-
-form h3
-  margin-top: 25px
+  td img
+    margin: 0px
+    padding: 0px 15px 0px 0px
+    float: left
 
 
 // Status messages
@@ -233,20 +168,3 @@ form h3
 
 #results
   display: none
-
-  big
-    font-size: 20px
-  
-  table
-    width: 100%
-  
-    td, th
-      padding-bottom: 15px
-      vertical-align: center
-  
-    td
-      width: 50%
-      font-size: 16px
-    
-    th
-      font-size: 28px

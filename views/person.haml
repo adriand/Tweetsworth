@@ -14,46 +14,41 @@
   .spacer
 
 #results
-  %h3 Finished calculation! Your Twitter account is worth
-  %h1 $0.00
-  %h3 Rating: Inconsequential
+
+  .callout
+    %strong Finished calculation! Your Twitter account is worth
+    %h1 $0.00
+    %strong Rating: Inconsequential
   
-  .spacer{:style => "height: 25px;"}
+  Here are the calculations Tweetsworth used:
   
-  %p Here are the calculations Tweetsworth used:
+  %table.data
+    %tr
+      %td
+        %img{:src => "/tweets.gif"}
+        %h3
+          Total Tweets:
+          %strong= @person.statuses_count
+        You sure like the sound of your own voice.
+      %td
+        %img{:src => "/globe.gif"}
+        %h3
+          Followers:
+          %strong= @person.followers_count
+        That's like, what, a small village? A hamlet? Way to escape the farmstead, chief.
+    %tr
+      %td
+        %img{:src => "/member.gif"}
+        %h3
+          Tweeting Since:
+          %strong= @person.joined_twitter_at.strftime("%B %d %Y")
+        Words thrown into a void, my friend. Sad, really.
+      %td
+        %img{:src => "/retweet.gif"}
+        %h3
+          Retweets:
+          %strong I dunno.
+        Your retweets are so boring our algorithm fell asleep.
   
-  %p
-    Total Tweets:
-    %big
-      %strong= @person.statuses_count
-    %br/
-    %small You sure like the sound of your own voice.
-    
-  %p
-    Followers:
-    %big
-      %strong= @person.followers_count
-    %br/
-    %small That's like, what, a small village? A hamlet? Way to escape the farmstead, chief.
-    
-  %p
-    Tweeting Since:
-    %big
-      %strong= @person.joined_twitter_at.strftime("%B %d %Y")
-    %br/
-    %small Words thrown into a void, my friend. Sad, really.
-    
-  %p
-    Retweets:
-    %big
-      %strong I dunno.
-    %br/
-    %small Your retweets are so boring our algorithm fell asleep.
-  
-  .spacer{:style => "height: 20px;"}
-  
-  %p
-    %a{:href => "#"} SHARE THIS CALCULATION.
-    
-  %p
-    %a{:href => "#"} SEND TO A FRIEND.
+  %h2
+    %a{:href => "#"} Share Tweetsworth with a Friend!
