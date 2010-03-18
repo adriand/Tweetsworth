@@ -24,7 +24,7 @@ configure :development do
 end
 
 configure :production do
-  require File.join(root, '..', 'shared', 'config', 'production.rb')
+  require '/var/apps/tweetsworth/shared/config/production.rb'
   LOGGER = Logger.new("log/sinatra.log") 
 end
 
