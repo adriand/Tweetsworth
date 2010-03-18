@@ -10,7 +10,7 @@ require 'httparty'
 require 'ruby-debug'
 require 'logger'
 
-set :root, File.dirame(__FILE_)
+set :root, File.dirame(__FILE__)
 set :views, Proc.new { File.join(root, "views") }
 # If you want changes to your application to appear in development mode without having to 
 # restart the application, you need something that will reload your app automatically. 
