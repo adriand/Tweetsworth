@@ -43,6 +43,8 @@ DataMapper.auto_upgrade!
 #DataMapper.auto_migrate!
 
 get '/' do
+  @recent = Person.all(:limit => 5, :order => [ :created_at.desc ])
+  @top = Person.all(:limit => 5, :order => [ :followers_count.desc ])
   haml :index
 end
 
@@ -88,6 +90,12 @@ end
 
 not_found do
   haml :'404'
+end
+
+helpers do  
+  def twitter_link(screen_name)
+    "<a href='http://twitter.com/#{screen_name}' target='_'>#{screen_name}</a>"
+  end
 end
 
 private

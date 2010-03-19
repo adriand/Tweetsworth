@@ -25,7 +25,7 @@
 
 .spacer{:style => "height: 20px;"}
     
-.callout{:style => "width: 40%; float: left;"}
+.callout{:style => "width: 43%; float: left;"}
   %p
     %strong Cash, Baby. Cash.
   %p
@@ -35,7 +35,22 @@
     %strong cash
     (via PayPal or Interac money transfer).
     
-.callout{:style => "width: 40%; float: left; margin-left: 20px;"}
-
+.callout{:style => "width: 43%; float: right;"}
+  %p
+    %strong Recent Valuations
+  %p
+    - @recent.each do |recent|
+      = twitter_link(recent.name)
+      \-
+      = "#{recent.followers_count} followers"
+      %br/
+  %p
+    %strong Top Valuations By Followers
+  %p
+    - @top.each do |top|
+      = twitter_link(top.name)
+      \-
+      = "#{top.followers_count} followers"
+      %br/
 
 .spacer
