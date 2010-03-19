@@ -40,7 +40,7 @@
     %strong Recent Valuations
   %p
     - @recent.each do |recent|
-      = twitter_link(recent.name)
+      = twitter_link(recent)
       \-
       = "#{recent.followers_count} followers"
       %br/
@@ -48,7 +48,7 @@
     %strong Top Valuations By Followers
   %p
     - @top.each do |top|
-      = twitter_link(top.name)
+      = twitter_link(top)
       \-
       = "#{top.followers_count} followers"
       %br/

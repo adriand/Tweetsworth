@@ -93,8 +93,8 @@ not_found do
 end
 
 helpers do  
-  def twitter_link(screen_name)
-    "<a href='http://twitter.com/#{screen_name}' target='_'>#{screen_name}</a>"
+  def twitter_link(person)
+    "<a href='http://twitter.com/#{person.screen_name}' target='_'>#{person.name}</a>"
   end
 end
 
