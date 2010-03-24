@@ -125,11 +125,11 @@ At this point, we are successfully retrieving information from Twitter, storing 
 
 After redirecting to the person's individual page, we're going to show them their results.  To make things convincing, we're going to display things as if we are calculating them on the fly, complete with progress indicators.
 
-We're going to display three things.  First, a series of messages indicating progress, with each one appearing one after another, replacing the one displayed previously.  These will be in the form: "Measuring vocabulary level...", a pause, then "Seventh grade".
+We're going to display three things.  First, a series of messages indicating progress, with each one appearing one after another, replacing the one displayed previously.  These will be in the form: "Evaluating Followers...", a pause, then "Questionable".
 
-Second, when the progress messages have completed displaying, we'll slide out a results panel.  These results will be in the form: "Likelihood that you'll be able to retire on income from Twitter stream: 0%".
+Second, when the progress messages have completed displaying, we'll slide out a results panel.  These results will be in the form: "Total Tweets: 981. You sure like the sound of your own voice."
 
-And finally, we'll display a paragraph at the end with a disparaging summary of the overall quality of their followers and tweets, followed by some encouragement to sucker their friends by tweeting about the site.
+And finally, we'll display a link encouraging users to sucker their friends into trying out our application by tweeting about it.
 
 Let's start with the progress messages.  If you were paying attention to the little details in the layout file we created, you may have noticed that we put:
 
@@ -144,6 +144,26 @@ This is the logical equivalent of doing <code>content_for :scripts do</code> in 
 We'll also specify some progress statements in our main application file.  This will let us swap out progress statements easily later on, which we'll probably do later on as we polish the content:
 
 <script src="http://gist.github.com/334355.js?file=progress_statements.rb"></script>
+
+All that's left to do is write the progress statements into the view with a stylesheet declaration of display: none on them, and then write some Javascript to show them one after another.  We use Javascript's setTimeOut function for this.  When the progress statements have finished displaying, we slide down the pane containing the results of the evaluation.
+
+This is pretty trivial, so I'm not going to embed code for this.  Check the project repository if you're interested in this part.
+
+
+
+<h2>Going Viral</h2>
+
+When it comes to going viral, there are no guarantees.  At this point we think we've developed something clever and funny, but perhaps no one else agrees.  Or perhaps people are unlikely to pass along something that is outright insulting.  Until we launch, it's hard to say.
+
+However, there are things we can do to increase the likelihood that this will get passed along.
+
+<ol>
+  <li>Carefully refine the insults.  If the insults are lame, this isn't going anywhere.  We also sent out a request to friends for more jokes and received some excellent responses.  Bottom-line: if the content is weak, no amount of technical wizardry will help make something go viral.</li>
+  <li>Provide a way to spread the site.  This is obvious, but needs to be mentioned.  In our case, we put a link on the results section of the site that lets people tweet a link to the site.</li>
+  <li>Add A/B or multivariate testing to the page that encourages people to spread a link to the site.  I started out using Google's <a href="http://www.google.com/websiteoptimizer">Website Optimizer</a> for this task, but I got frustrated with how clunky it can be.  This is going to be fall into the wishlist category: if I find the time, I'll add it.</li>
+  <li>Encourage people to participate in other ways.  At the end of the results page, we added in a request for people to send us more insults.  When we use submissions, we'll tweet back to the person who sent them in.  Someone who contributes to the site is far more likely to help spread it.</li>
+</ol>
+
 
 
 
