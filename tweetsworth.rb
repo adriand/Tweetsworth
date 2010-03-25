@@ -6,6 +6,7 @@ require 'rack' # more on the decision to include this below
 require 'dm-core'
 require 'dm-timestamps'
 require 'haml'
+require 'sass'
 require 'httparty'
 require 'ruby-debug'
 require 'logger'
