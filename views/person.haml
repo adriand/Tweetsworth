@@ -29,26 +29,26 @@
         %h3
           Total Tweets:
           %strong= @person.statuses_count
-        You sure like the sound of your own voice.
+        = tweet_insult(@person.statuses_count)
       %td
         %img{:src => "/globe.gif"}
         %h3
           Followers:
           %strong= @person.followers_count
-        That's like, what, a small village? A hamlet? Way to escape the farmstead, chief.
+        = follower_insult(@person.followers_count)
     %tr
       %td
         %img{:src => "/member.gif"}
         %h3
           Tweeting Since:
           %strong= @person.joined_twitter_at.strftime("%B %d %Y")
-        Words thrown into a void, my friend. Sad, really.
+        = duration_insult(@person.joined_twitter_at)
       %td
         %img{:src => "/retweet.gif"}
         %h3
           Retweets:
-          %strong I dunno.
-        Your retweets are so boring our algorithm fell asleep.
+          %strong Unknown.
+        = retweet_insult
   
   %h2
     %a{:href => "http://twitter.com/home/?status=" + CGI::escape("Just got surprisingly accurate results from world's first 100% guaranteed accurate Twitter account valuator. http://tweetsworth.com")} Share Tweetsworth with a Friend!

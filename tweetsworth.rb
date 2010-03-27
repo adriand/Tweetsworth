@@ -97,6 +97,38 @@ helpers do
   def twitter_link(person)
     "<a href='http://twitter.com/#{person.screen_name}' target='_'>#{person.name}</a>"
   end
+  
+  def tweet_insult(tweets)
+    case tweets
+      when 0..400 then ["Don't have much to say? No surprise there."]
+      when 401..10000 then ["You sure like the sound of your own voice.", "Just what the web needs: another narcissist."]
+      else ["The volume of your tweets is only matched by their stupidity."]
+    end.sort_by { rand }.first
+  end
+  
+  def follower_insult(followers)
+    case followers
+      when 0..100 then ["Hopefully you've got more friends offline, though we're not counting on it."]
+      when 101..1000 then ["That's like, what, a small village? A hamlet? Way to escape the farmstead, chief.", "And you thought you'd get more popular once you finished high school."]
+      else ["Proof positive that large numbers of people can be very, very wrong.", "Lemmings."]
+    end.sort_by { rand }.first
+  end
+  
+  def duration_insult(joined_twitter_at)
+    case (Date.today - joined_twitter_at)
+      when 0..150 then ["A little late to the party, no?"]
+      else ["Words thrown into a void, my friend. Sad, really.", "Normally people get better at something the longer they do it."]
+    end.sort_by { rand }.first
+  end
+  
+  def retweet_insult
+    ["Your retweets are so boring our algorithm fell asleep.", "Take the hint: nobody cares what you have to say."].sort_by { rand }.first
+  end
+  
+  def get_random(insults)
+    
+  end
+  
 end
 
 private
