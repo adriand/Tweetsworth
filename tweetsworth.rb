@@ -1,5 +1,5 @@
 # When we create our Rackup file, we'll already be requiring RubyGems and Sinatra, 
-# so we don't require them again if they've already been loaded.
+# use 'unless defined?' so we don't require the gems again if they've already been loaded.
 require 'rubygems' unless defined? ::RubyGems
 require 'sinatra' unless defined? ::Sinatra
 require 'rack' # more on the decision to include this below
@@ -9,8 +9,6 @@ require 'haml'
 require 'sass'
 require 'httparty'
 require 'ruby-debug'
-require 'logger'
-
 
 # If you want changes to your application to appear in development mode without having to 
 # restart the application, you need something that will reload your app automatically. 
@@ -26,7 +24,6 @@ end
 
 configure :production do
   require '/var/apps/tweetsworth/shared/config/production.rb'
-  LOGGER = Logger.new("log/sinatra.log") 
 end
 
 # This is such a simple application that we likely don't need a separate file for models, 
@@ -100,7 +97,7 @@ helpers do
   
   def tweet_insult(tweets)
     case tweets
-      when 0..400 then ["Don't have much to say? No surprise there."]
+      when 0..400 then ["Don't have much to say? No big surprise there."]
       when 401..10000 then ["You sure like the sound of your own voice.", "Just what the web needs: another narcissist."]
       else ["The volume of your tweets is only matched by their stupidity."]
     end.sort_by { rand }.first
@@ -116,17 +113,13 @@ helpers do
   
   def duration_insult(joined_twitter_at)
     case (Date.today - joined_twitter_at)
-      when 0..150 then ["A little late to the party, no?"]
+      when 0..120 then ["A little late to the party, no?"]
       else ["Words thrown into a void, my friend. Sad, really.", "Normally people get better at something the longer they do it."]
     end.sort_by { rand }.first
   end
   
   def retweet_insult
     ["Your retweets are so boring our algorithm fell asleep.", "Take the hint: nobody cares what you have to say."].sort_by { rand }.first
-  end
-  
-  def get_random(insults)
-    
   end
   
 end
