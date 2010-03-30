@@ -13,7 +13,7 @@ role :db, "app1.factore.ca", :primary => true
 
 before("deploy:cleanup") { set :user, "root" }
 # after("deploy:update_code") { run "cd #{current_release}; cp config/database.yml.template config/database.yml" }
-after("deploy:restart") { run "ln -s /var/apps/tweetsworth/shared/.htaccess /var/apps/tweetsworth/current/public/.htaccess" }
+# after("deploy:restart") { run "ln -s /var/apps/tweetsworth/shared/.htaccess /var/apps/tweetsworth/current/public/.htaccess" }
 
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
