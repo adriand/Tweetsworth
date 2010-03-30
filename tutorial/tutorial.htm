@@ -1,4 +1,13 @@
+
+
+
 Explain the project, that it was Tom's idea, and so on.
+
+
+<p>Sinatra, the classy web development framework, just hit 1.0.  In honour of the occasion, we thought we'd whip up a Sinatra tutorial.</p>
+
+
+
 
 Standard tutorials tend to show you how to build blogs.  I've always felt that was rather pointless.  Why wouldn't you just use WordPress?
 
@@ -18,7 +27,13 @@ Sure, you can learn a lot from building something familiar, but it's more fun to
 How To Create A Viral Website - Source Code Included!
 =====================================================
 
+
+
+<h2>About This Tutorial</h2>
+
 In this tutorial, I'm going to focus on key source code elements and design decisions.  I'm not going to outline every single thing I do, or show detailed file structure layouts, or anything of that nature, because you can access the <a href="http://github.com/adriand/Tweetsworth">project's source code</a> itself if you're interested in that.
+
+This tutorial assumes a basic knowledge of Ruby programming and subsidiary activities like gem installation, templating languages, and so on.
 
 We're going to be using the just-released Sinatra 1.0 framework for this project:
 
@@ -27,7 +42,6 @@ We're going to be using the just-released Sinatra 1.0 framework for this project
 We're also going to be using Datamapper (with SQLite for development, switching to MySQL later on) for the ORM, HAML, SASS and jQuery for views, and whatever we decide is the best solution for accessing Twitter's API when we get to that point.  Go ahead and install those various gems if you don't have them already.
 
 Note that I've never had the opportunity to use SASS before, so please chime in if you see instances where I could improve the way I use it.
-
 
 <h2>The Foundation</h2>
 
@@ -145,9 +159,15 @@ We'll also specify some progress statements in our main application file.  This 
 
 <script src="http://gist.github.com/334355.js?file=progress_statements.rb"></script>
 
-All that's left to do is write the progress statements into the view with a stylesheet declaration of display: none on them, and then write some Javascript to show them one after another.  We use Javascript's setTimeOut function for this.  When the progress statements have finished displaying, we slide down the pane containing the results of the evaluation.
+All that's left to do is write the progress statements into the view with a stylesheet declaration of display: none on them, and then write some Javascript to show them one after another.  We use Javascript's setTimeOut function for this.
 
-This is pretty trivial, so I'm not going to embed code for this.  Check the project repository if you're interested in this part.
+When the progress statements have finished displaying, we slide down the pane containing the results of the evaluation.  The Javascript for displaying the progress bars and sliding down the results pane is pretty trivial, so I'm not going to display code for it.  Check the project repository if you're interested.
+
+The insults, on the other hand, are just too much fun to exclude.  To keep things interesting, we'll show different insults for different ranges of values.  We'll also set insults up as arrays, so that we can add new ones easily later on.  Here's the code for insulting people according to their number of followers:
+
+<script src="http://gist.github.com/346266.js?file=insult.rb"></script>
+
+
 
 
 
