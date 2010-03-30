@@ -14,46 +14,65 @@
   .spacer
 
 #results
-  %h3 Finished calculation! Your Twitter account is worth
-  %h1 $0.00
-  %h3 Rating: Inconsequential
+
+  .callout
+    %strong Finished calculation! Your Twitter account is worth
+    %h1 $0.00
+    %strong Rating: Inconsequential
   
-  .spacer{:style => "height: 25px;"}
+  Here are the calculations Tweetsworth used:
   
-  %p Here are the calculations Tweetsworth used:
+  %table.data
+    %tr
+      %td
+        %img{:src => "/tweets.gif"}
+        %h3
+          Total Tweets:
+          %strong= @person.statuses_count
+        = tweet_insult(@person.statuses_count)
+      %td
+        %img{:src => "/globe.gif"}
+        %h3
+          Followers:
+          %strong= @person.followers_count
+        = follower_insult(@person.followers_count)
+    %tr
+      %td
+        %img{:src => "/member.gif"}
+        %h3
+          Tweeting Since:
+          %strong= @person.joined_twitter_at.strftime("%B %d %Y")
+        = duration_insult(@person.joined_twitter_at)
+      %td
+        %img{:src => "/retweet.gif"}
+        %h3
+          Retweets:
+          %strong Unknown.
+        = retweet_insult
   
-  %p
-    Total Tweets:
-    %big
-      %strong= @person.statuses_count
-    %br/
-    %small You sure like the sound of your own voice.
+  %h2
+    %a{:href => "http://twitter.com/home/?status=" + CGI::escape("Just got surprisingly accurate results from world's first 100% guaranteed accurate Twitter account valuator. http://tweetsworth.com")} Share Tweetsworth with a Friend!
     
-  %p
-    Followers:
-    %big
-      %strong= @person.followers_count
-    %br/
-    %small That's like, what, a small village? A hamlet? Way to escape the farmstead, chief.
-    
-  %p
-    Tweeting Since:
-    %big
-      %strong= @person.joined_twitter_at.strftime("%B %d %Y")
-    %br/
-    %small Words thrown into a void, my friend. Sad, really.
-    
-  %p
-    Retweets:
-    %big
-      %strong I dunno.
-    %br/
-    %small Your retweets are so boring our algorithm fell asleep.
-  
-  .spacer{:style => "height: 20px;"}
+  .spacer{:style => "height: 50px;"}
   
   %p
-    %a{:href => "#"} SHARE THIS CALCULATION.
-    
-  %p
-    %a{:href => "#"} SEND TO A FRIEND.
+    %strong We want your insults.
+    %br/
+    %small
+      Supply an insult for one of the categories (e.g. Total Tweets), tweet it to 
+      %a{:href => "http://twitter.com/factor_e"} @factor_e
+      and if we're offended enough, we'll add it!
+
+      .spacer{:style => "height: 20px;"}
+
+    %p
+      %strong About Tweetsworth
+      %br/
+      %img{:src => "/factore.png", :style => "width: 40px; vertical-align: middle;"}
+      %small
+        Tweetsworth is an open-source project of
+        %a{:href => "http://factore.ca"} factor[e] design initiative.
+        Follow us
+        %a{:href => "http://twitter.com/factor_e"} @factor_e.
+        Fork Tweetsworth on
+        %a{:href => "http://github.com/adriand/Tweetsworth"} Github.

@@ -1,4 +1,13 @@
+
+
+
 Explain the project, that it was Tom's idea, and so on.
+
+
+<p>Sinatra, the classy web development framework, just hit 1.0.  In honour of the occasion, we thought we'd whip up a Sinatra tutorial.</p>
+
+
+
 
 Standard tutorials tend to show you how to build blogs.  I've always felt that was rather pointless.  Why wouldn't you just use WordPress?
 
@@ -18,7 +27,13 @@ Sure, you can learn a lot from building something familiar, but it's more fun to
 How To Create A Viral Website - Source Code Included!
 =====================================================
 
+
+
+<h2>About This Tutorial</h2>
+
 In this tutorial, I'm going to focus on key source code elements and design decisions.  I'm not going to outline every single thing I do, or show detailed file structure layouts, or anything of that nature, because you can access the <a href="http://github.com/adriand/Tweetsworth">project's source code</a> itself if you're interested in that.
+
+This tutorial assumes a basic knowledge of Ruby programming and subsidiary activities like gem installation, templating languages, and so on.
 
 We're going to be using the just-released Sinatra 1.0 framework for this project:
 
@@ -27,7 +42,6 @@ We're going to be using the just-released Sinatra 1.0 framework for this project
 We're also going to be using Datamapper (with SQLite for development, switching to MySQL later on) for the ORM, HAML, SASS and jQuery for views, and whatever we decide is the best solution for accessing Twitter's API when we get to that point.  Go ahead and install those various gems if you don't have them already.
 
 Note that I've never had the opportunity to use SASS before, so please chime in if you see instances where I could improve the way I use it.
-
 
 <h2>The Foundation</h2>
 
@@ -125,11 +139,11 @@ At this point, we are successfully retrieving information from Twitter, storing 
 
 After redirecting to the person's individual page, we're going to show them their results.  To make things convincing, we're going to display things as if we are calculating them on the fly, complete with progress indicators.
 
-We're going to display three things.  First, a series of messages indicating progress, with each one appearing one after another, replacing the one displayed previously.  These will be in the form: "Measuring vocabulary level...", a pause, then "Seventh grade".
+We're going to display three things.  First, a series of messages indicating progress, with each one appearing one after another, replacing the one displayed previously.  These will be in the form: "Evaluating Followers...", a pause, then "Questionable".
 
-Second, when the progress messages have completed displaying, we'll slide out a results panel.  These results will be in the form: "Likelihood that you'll be able to retire on income from Twitter stream: 0%".
+Second, when the progress messages have completed displaying, we'll slide out a results panel.  These results will be in the form: "Total Tweets: 981. You sure like the sound of your own voice."
 
-And finally, we'll display a paragraph at the end with a disparaging summary of the overall quality of their followers and tweets, followed by some encouragement to sucker their friends by tweeting about the site.
+And finally, we'll display a link encouraging users to sucker their friends into trying out our application by tweeting about it.
 
 Let's start with the progress messages.  If you were paying attention to the little details in the layout file we created, you may have noticed that we put:
 
@@ -145,5 +159,61 @@ We'll also specify some progress statements in our main application file.  This 
 
 <script src="http://gist.github.com/334355.js?file=progress_statements.rb"></script>
 
+All that's left to do is write the progress statements into the view with a stylesheet declaration of display: none on them, and then write some Javascript to show them one after another.  We use Javascript's setTimeOut function for this.
+
+When the progress statements have finished displaying, we slide down the pane containing the results of the evaluation.  The Javascript for displaying the progress bars and sliding down the results pane is pretty trivial, so I'm not going to display code for it.  Check the project repository if you're interested.
+
+The insults, on the other hand, are just too much fun to exclude.  To keep things interesting, we'll show different insults for different ranges of values.  We'll also set insults up as arrays, so that we can add new ones easily later on.  Here's the code for insulting people according to their number of followers:
+
+<script src="http://gist.github.com/346266.js?file=insult.rb"></script>
 
 
+
+
+
+<h2>Going Viral</h2>
+
+When it comes to going viral, there are no guarantees.  At this point we think we've developed something clever and funny, but perhaps no one else agrees.  Or perhaps people are unlikely to pass along something that is outright insulting.  Until we launch, it's hard to say.
+
+However, there are things we can do to increase the likelihood that this will get passed along.
+
+<ol>
+  <li>Carefully refine the insults.  If the insults are lame, this isn't going anywhere.  We also sent out a request to friends for more jokes and received some excellent responses.  Bottom-line: if the content is weak, no amount of technical wizardry will help make something go viral.</li>
+  <li>Provide a way to spread the site.  This is obvious, but needs to be mentioned.  In our case, we put a link on the results section of the site that lets people tweet a link to the site.</li>
+  <li>Add A/B or multivariate testing to the page that encourages people to spread a link to the site.  I started out using Google's <a href="http://www.google.com/websiteoptimizer">Website Optimizer</a> for this task, but I got frustrated with how clunky it can be.  This is going to be fall into the wishlist category: if I find the time, I'll add it.</li>
+  <li>Encourage people to participate in other ways.  At the end of the results page, we added in a request for people to send us more insults.  When we use submissions, we'll tweet back to the person who sent them in.  Someone who contributes to the site is far more likely to help spread it.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+Letter for API rate limit:
+--------------------------
+
+
+The application is a humorous parody of Twitter account valuation tools.
+
+Although a Twitter account has a subjective value (that can be high), I believe it is only truly valuable to the person who owns it - if I were to sell my Twitter account to a marketing company for example, my followers would quickly desert the account, rendering it worthless.  In other words, Twitter valuation tools are rather silly.
+
+We took advantage of this to design a realistic-looking Twitter valuation site that, after performing many complex-sounding calculations, always returns a value of $0.00 for the person's Twitter account.  We're just looking to get a laugh, and for people to play the same prank on their friends.
+
+You can try it yourself at:
+
+http://tweetsworth.com
+
+Because we're not going live until we get the API rate limit raised, you'll need to enter the following u/p to gain access:
+
+tweetsworth / n1OBVxWz
+
+The only method we are using is users/show
+
+As far as predicted usage goes: as this is a joke site, we hope this spreads rapidly, but it's really only a one-time use type of thing.  If it goes viral we'll see a big spike of traffic but after that, I can't see it getting more than a couple of hundred visits a day.  I want the rate limit increased just to handle the spike of traffic if it does go viral.
+
+I am requesting IP address whitelisting since we're not authenticating, as we don't actually need to for users/show
+
+Thanks!

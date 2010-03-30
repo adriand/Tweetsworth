@@ -1,7 +1,5 @@
-%h3 Calculate the value of your Twitter account instantly with
-%h1 The World's First 100% Accurate Twitter Valuation Tool
-
-.spacer{:style => "height: 20px;"}
+%strong Calculate the value of your Twitter account instantly with the
+%h1 World's First 100% Accurate Twitter Valuation Tool
 
 %p
   Tweetsworth uses advanced algorithms based on your number of followers, the content of your tweets, and 
@@ -10,12 +8,49 @@
   %strong your
   worth.
 
-.spacer{:style => "height: 20px;"}
+.spacer{:style => "height: 10px;"}
 
-/ Although from the user's perspective we are requesting a "username", we'll use Twitter's nomenclature
-/ for this field and call it screen_name in our code instead. By using the same names as the API you 
-/ interact with, you decrease the cognitive overhead of dealing with the API.
-%form{:action => "/value", :method => "post"}
-  Enter your Twitter username:
-  %input{:name => "screen_name", :type => "text"}
-  %input{:type => "submit", :value => "Submit"}
+.callout
+  / Although from the user's perspective we are requesting a "username", we'll use Twitter's nomenclature
+  / for this field and call it screen_name in our code instead. By using the same names as the API you 
+  / interact with, you decrease the cognitive overhead of dealing with the API.
+  %form{:action => "/value", :method => "post"}
+    %img{:src => "/retweet.gif", :style => "vertical-align: middle;"}
+    &nbsp;
+    %big Enter your Twitter username:
+    &nbsp;
+    %input{:name => "screen_name", :type => "text", :style => "font-size: 18px;"}
+    &nbsp;
+    %input{:type => "submit", :value => "Submit", :style => "font-size: 18px;"}
+
+.spacer{:style => "height: 20px;"}
+    
+.callout{:style => "width: 43%; float: left;"}
+  %p
+    %strong Cash, Baby. Cash.
+  %p
+    Unlike the other Twitter valuation sites which talk a big game but never put up the dough,
+    %strong we'll actually purchase your Twitter account
+    for 90% of the calculated value on the spot in 
+    %strong cash
+    (via PayPal or Interac money transfer).
+    
+.callout{:style => "width: 43%; float: right;"}
+  %p
+    %strong Recent Valuations
+  %p
+    - @recent.each do |recent|
+      = twitter_link(recent)
+      \-
+      = "#{recent.followers_count} followers"
+      %br/
+  %p
+    %strong Top Valuations By Followers
+  %p
+    - @top.each do |top|
+      = twitter_link(top)
+      \-
+      = "#{top.followers_count} followers"
+      %br/
+
+.spacer
