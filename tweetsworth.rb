@@ -95,31 +95,46 @@ helpers do
     "<a href='http://twitter.com/#{person.screen_name}' target='_'>#{person.name}</a>"
   end
   
+  def rating_insult
+    ["Inconsequential", "Unsurprising", "PG-13", "Yawn", "Contemptible"].sort_by { rand }.first
+  end
+  
   def tweet_insult(tweets)
     case tweets
-      when 0..400 then ["Don't have much to say? No big surprise there."]
-      when 401..10000 then ["You sure like the sound of your own voice.", "Just what the web needs: another narcissist."]
-      else ["The volume of your tweets is only matched by their stupidity."]
+      when 0..200 then ["Don't have much to say? No big surprise there."]
+      when 201..400 then ["Do you really have to inform the world each time you sneeze?"]
+      when 401..5000 then ["That college degree is really paying off.", "Just what the web needs: another narcissist.", "When was the last time you called your mother?"]
+      when 5001..10000 then ["You sure like the sound of your own voice.", "Just what the web needs: another narcissist.", "Considerably less if we discount the tweets about what you had for lunch."]
+      else ["The volume of your tweets is only matched by their utter pointlessness.", "Enough for a boring self-involved book.", "You are the Dostoevsky of tweets, only twice as boring."]
     end.sort_by { rand }.first
   end
   
   def follower_insult(followers)
     case followers
-      when 0..100 then ["Hopefully you've got more friends offline, though we're not counting on it."]
-      when 101..1000 then ["That's like, what, a small village? A hamlet? Way to escape the farmstead, chief.", "And you thought you'd get more popular once you finished high school."]
-      else ["Proof positive that large numbers of people can be very, very wrong.", "Lemmings."]
+      when 0..50 then ["At least you can console yourself in the fact that we ALL die alone."]
+      when 51..200 then ["Hopefully you've got more friends offline, though we're not counting on it.", "There are people in prison with more friends than you."]
+      when 201..1000 then ["That's like, what, a small village? A hamlet? Way to escape the farmstead, chief.", "And you thought you'd get more popular once you finished high school."]
+      else ["Proof positive that large numbers of people can be very, very wrong.", "Lemmings.", "We didn't count your mom."]
     end.sort_by { rand }.first
   end
   
   def duration_insult(joined_twitter_at)
     case (Date.today - joined_twitter_at)
-      when 0..120 then ["A little late to the party, no?"]
+      when 0..120 then ["A little late to the party, no?", "Just after my grandmother signed up."]
       else ["Words thrown into a void, my friend. Sad, really.", "Normally people get better at something the longer they do it."]
     end.sort_by { rand }.first
   end
   
   def retweet_insult
-    ["Your retweets are so boring our algorithm fell asleep.", "Take the hint: nobody cares what you have to say."].sort_by { rand }.first
+    ["Your retweets are so boring our algorithm fell asleep.", "Take the hint: nobody cares what you have to say.", "Have you always been this boring, or are you putting in extra effort?"].sort_by { rand }.first
+  end
+  
+  def share
+    [
+      "Got surprisingly accurate results from world's first 100% accurate Twitter account valuator. http://tweetsworth.com", 
+      "Shocked by my results from world's first 100% accurate Twitter account valuator. http://tweetsworth.com",
+      "I'm curious to see if your account is worth more than mine (I doubt it) - check at http://tweetsworth.com"
+    ].sort_by { rand }.first
   end
   
 end

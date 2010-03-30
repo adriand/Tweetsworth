@@ -18,7 +18,9 @@
   .callout
     %strong Finished calculation! Your Twitter account is worth
     %h1 $0.00
-    %strong Rating: Inconsequential
+    %strong
+      Rating:
+      = rating_insult
   
   Here are the calculations Tweetsworth used:
   
@@ -51,7 +53,7 @@
         = retweet_insult
   
   %h2
-    %a{:href => "http://twitter.com/home/?status=" + CGI::escape("Just got surprisingly accurate results from world's first 100% guaranteed accurate Twitter account valuator. http://tweetsworth.com")} Share Tweetsworth with a Friend!
+    %a{:href => "http://twitter.com/home/?status=" + CGI::escape(share)} Share Tweetsworth with a Friend!
     
   .spacer{:style => "height: 50px;"}
       
