@@ -25,49 +25,52 @@
 
   .spacer{:style => "height: 30px;"}
   
-  %h2 You are now faced with an important choice between GOOD and EVIL.
+  .callout
+    %h2 You are now faced with an important choice between GOOD and EVIL.
   
-  %table.data
-    %tr
-      %td
-        %big
-          %strong Good
-      %td
-        %big
-          %strong Evil
-    %tr
-      %td
-        %p
-          The good algorithm has nothing but nice things to say. It likes big numbers.
-          - if session[:nature] == "good"
-            %strong This is the algorithm that ranked your account.          
-      %td
-        %p
-          The evil algorithm is always insulting and loves the number zero above all. But at
-          least it has a sense of humour.
-          - if session[:nature] == "evil"
-            %strong Unfortunately, this is the algorithm that ranked your account. Sorry!
-    %tr
-      %td
-        %p
-          People who go to
-          %a{:href => "http://tweetsworth.com/g"} http://tweetsworth.com/g
-          will be ranked with the good algorithm.
-      %td
-        %p
-          People who go to
-          %a{:href => "http://tweetsworth.com/e"} http://tweetsworth.com/e
-          will be ranked with the evil algorithm.
-    %tr
-      %td
-        %h2
-          %a{:href => "http://twitter.com/home/?status=" + CGI::escape(good_share)} Retweet for GOOD
+    %table.data
+      %tr
+        %td
+          %big
+            %strong Good
+        %td
+          %big
+            %strong Evil
+      %tr
+        %td
+          %p
+            The good algorithm has nothing but nice things to say. It likes big numbers.
+            - if session[:nature] == "good"
+              %strong This is the algorithm that ranked your account.          
+        %td
+          %p
+            The evil algorithm is always insulting and loves the number zero above all. But at
+            least it has a sense of humour.
+            - if session[:nature] == "evil"
+              %strong Unfortunately, this is the algorithm that ranked your account. Sorry!
+      %tr
+        %td
+          %p
+            People who go to
+            %a{:href => "http://tweetsworth.com/g"} http://tweetsworth.com/g
+            will be ranked with the good algorithm.
+        %td
+          %p
+            People who go to
+            %a{:href => "http://tweetsworth.com/e"} http://tweetsworth.com/e
+            will be ranked with the evil algorithm.
+      %tr
+        %td
+          %h2
+            %a{:href => "http://twitter.com/home/?status=" + CGI::escape(good_share)} Retweet for GOOD
+          Bestow the blessing of a positive valuation on your followers.
                 
-      %td
-        %h2
-          %a{:href => "http://twitter.com/home/?status=" + CGI::escape(evil_share)} Retweet for EVIL
+        %td
+          %h2
+            %a{:href => "http://twitter.com/home/?status=" + CGI::escape(evil_share)} Retweet for EVIL
+          Inflict the pain of a negative valuation on your followers.
   
     
-  .spacer{:style => "height: 50px;"}
+  .spacer{:style => "height: 40px;"}
       
   = haml :factore, :layout => false
