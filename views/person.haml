@@ -15,46 +15,59 @@
 
 #results
 
-  .callout
-    %strong Finished calculation! Your Twitter account is worth
-    %h1 $0.00
-    %strong
-      Rating:
-      = rating_insult
+  = haml session[:nature].to_sym, :layout => false
   
-  Here are the calculations Tweetsworth used:
+  %br/
+  
+  %p
+    Link to your account valuation with
+    %a{:href => "#{request.path}" }= "http://tweetsworth.com#{request.path}"
+
+  .spacer{:style => "height: 30px;"}
+  
+  %h2 You are now faced with an important choice between GOOD and EVIL.
   
   %table.data
     %tr
       %td
-        %img{:src => "/tweets.gif"}
-        %h3
-          Total Tweets:
-          %strong= @person.statuses_count
-        = tweet_insult(@person.statuses_count)
+        %big
+          %strong Good
       %td
-        %img{:src => "/globe.gif"}
-        %h3
-          Followers:
-          %strong= @person.followers_count
-        = follower_insult(@person.followers_count)
+        %big
+          %strong Evil
     %tr
       %td
-        %img{:src => "/member.gif"}
-        %h3
-          Tweeting Since:
-          %strong= @person.joined_twitter_at.strftime("%B %d %Y")
-        = duration_insult(@person.joined_twitter_at)
+        %p
+          The good algorithm has nothing but nice things to say. It likes big numbers.
+          - if session[:nature] == "good"
+            %strong This is the algorithm that ranked your account.          
       %td
-        %img{:src => "/retweet.gif"}
-        %h3
-          Retweets:
-          %strong Unknown.
-        = retweet_insult
+        %p
+          The evil algorithm is always insulting and loves the number zero above all. But at
+          least it has a sense of humour.
+          - if session[:nature] == "evil"
+            %strong Unfortunately, this is the algorithm that ranked your account. Sorry!
+    %tr
+      %td
+        %p
+          People who go to
+          %a{:href => "http://tweetsworth.com/g"} http://tweetsworth.com/g
+          will be ranked with the good algorithm.
+      %td
+        %p
+          People who go to
+          %a{:href => "http://tweetsworth.com/e"} http://tweetsworth.com/e
+          will be ranked with the evil algorithm.
+    %tr
+      %td
+        %h2
+          %a{:href => "http://twitter.com/home/?status=" + CGI::escape(good_share)} Retweet for GOOD
+                
+      %td
+        %h2
+          %a{:href => "http://twitter.com/home/?status=" + CGI::escape(evil_share)} Retweet for EVIL
   
-  %h2
-    %a{:href => "http://twitter.com/home/?status=" + CGI::escape(share)} Prank your friends!!!
     
   .spacer{:style => "height: 50px;"}
       
-  = haml :"_factore", :layout => false
+  = haml :factore, :layout => false

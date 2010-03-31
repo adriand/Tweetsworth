@@ -1,0 +1,36 @@
+.callout
+  %strong Finished calculation! Your Twitter account is worth
+  %h1= sprintf('$%0.2f',(@person.followers_count * rand(100))).gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")
+  %strong
+    Rating:
+    = rating_compliment
+
+Here are the calculations Tweetsworth used:
+
+%table.data
+  %tr
+    %td
+      %img{:src => "/tweets.gif"}
+      %h3
+        Total Tweets:
+        %strong= @person.statuses_count
+      = tweet_compliment(@person.statuses_count)
+    %td
+      %img{:src => "/globe.gif"}
+      %h3
+        Followers:
+        %strong= @person.followers_count
+      = follower_compliment(@person.followers_count)
+  %tr
+    %td
+      %img{:src => "/member.gif"}
+      %h3
+        Tweeting Since:
+        %strong= @person.joined_twitter_at.strftime("%B %d %Y")
+      = duration_compliment(@person.joined_twitter_at)
+    %td
+      %img{:src => "/retweet.gif"}
+      %h3
+        Retweets:
+        %strong Numerous
+      = retweet_compliment

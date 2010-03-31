@@ -27,16 +27,6 @@
     
 .callout{:style => "width: 43%; float: left;"}
   %p
-    %strong Cash, Baby. Cash.
-  %p
-    Unlike the other Twitter valuation sites which talk a big game but never put up the dough,
-    %strong we'll actually purchase your Twitter account
-    for 90% of the calculated value on the spot in 
-    %strong cash
-    (via PayPal or Interac money transfer).
-    
-.callout{:style => "width: 43%; float: right;"}
-  %p
     %strong Recent Valuations
   %p
     - @recent.each do |recent|
@@ -44,6 +34,8 @@
       \-
       = "#{recent.followers_count} followers"
       %br/
+    
+.callout{:style => "width: 43%; float: right;"}
   %p
     %strong Top Valuations By Followers
   %p
@@ -55,4 +47,4 @@
 
 .spacer
 
-= haml :"_factore", :layout => false
+= haml :factore, :layout => false

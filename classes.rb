@@ -26,3 +26,11 @@ class Person
   property :created_at, DateTime
   
 end
+
+class Array
+  
+  def random
+    self.sort_by { rand }.first
+  end
+  
+end
