@@ -1,6 +1,6 @@
 .callout
   %strong Finished calculation! Your Twitter account is worth
-  %h1= sprintf('$%0.2f',(@person.statuses_count * 1.56823 * (@person.followers_count / 2))).gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")
+  %h1= sprintf('$%0.2f',(@person.statuses_count * .056823 * (@person.followers_count / 2))).gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")
   %strong
     Rating:
     = rating_compliment
