@@ -162,37 +162,37 @@ helpers do
   
   # good algorithm compliments people
   def rating_compliment
-    ["Brilliant", "Luminous", "Inspiring", "Extraordinary"].random
+    ["Brilliant", "Luminous", "Inspiring", "Extraordinary", "Poetic", "Cultured", "Top-drawer", "4 out of 5 dentists recommend you.", "Epic", "Magnificent", "A++++++ would definitely follow again"].random
   end
   
   def tweet_compliment(tweets)
     case tweets
-      when 0..400 then ["Consistently insightful: you'll go far."]
-      when 401..5000 then ["A monument to the power of the written word."]
-      when 5001..10000 then ["Like delicate morsels of pure beauty."]
-      else ["Like a river of the purest water, except instead of water, pure wisdom."]
+      when 0..400 then ["Consistently insightful: you'll go far.", "All of them of literary gems.", "Please tweet more. We need more of your words."]
+      when 401..5000 then ["A monument to the power of the written word.", "Staggering works of heartbreaking genius.", "Delightfully prolific."]
+      when 5001..10000 then ["Like delicate morsels of pure beauty.", "Please tweet more. We need more of your words.", "A magnum opus for the ages!"]
+      else ["Like a river of the purest water, except instead of water, pure wisdom.", "Shakespeare would be green with envy.", "Almost enough for a 19th century Russian novel - a great one."]
     end.random
   end
   
   def follower_compliment(followers)
     case followers
-      when 0..50 then ["Your followers are few, but are excellent judges of character."]
-      when 51..200 then ["Rarely has a more educated, talented group assembled online."]
-      when 201..1000 then ["Philosophers. Thinkers. Innovators. You attract remarkable people."]
-      else ["They know a genius when they see one."]
+      when 0..50 then ["Your followers are few, but are excellent judges of character.", "Clearly the smartest people on Twitter."]
+      when 51..200 then ["Rarely has a more educated, talented group assembled online.", "Yes, this many you-enthusiasts. Hardly surprising.", "It's rare for a genius to be recognized in their own time."]
+      when 201..1000 then ["Philosophers. Thinkers. Innovators. You attract remarkable people.", "This many people think you're super awesome.", "Only a great leader can so effortlessly amass such an army of followers."]
+      else ["They know a genius when they see one.", "You're well on your way to replacing Ashton Kutcher."]
     end.random
   end
   
   def duration_compliment(joined_twitter_at)
     case (Date.today - joined_twitter_at)
-      when 0..300 then ["Truly a worthy addition to the community."]
-      when 301..550 then ["Partial credit for Twitter's remarkable growth can be laid at your feet."]
-      else ["You set the trends others follow."]
+      when 0..300 then ["Truly a worthy addition to the community.", "Not long enough. We need more of you.", "Words cannot express the positive impact you've made in just a short amount of time."]
+      when 301..550 then ["Partial credit for Twitter's remarkable growth can be laid at your feet.", "...and hopefully much longer.", "Don't stop now - you're on a tear!"]
+      else ["You set the trends others follow.", "If only Twitter had existed at your birth, to capture your genius from day one."]
     end.random
   end
   
   def retweet_compliment
-    ["Frankly, we're surprised there aren't many more."].random
+    ["Frankly, we're surprised there aren't many more.", "You were so popular it broke our algorithm.", "Your deft hand molds the blogosphere with precision and grace.", "Today's RT is tomorrow's /b/ meme.", "Others wish to bask in your reflected glory."].random
   end
   
   def good_share
