@@ -69,7 +69,7 @@ post '/value' do
   if screen_name && screen_name != ""
     @info = Twitter.get('/1/users/show.json', :query => { :screen_name => screen_name })
     if @info['error']
-      redirect "/?failure=There was an error retrieving your account information. Twitter says: #{info['error']}."
+      redirect "/?failure=There was an error retrieving your account information. Twitter says: #{@info['error']}."
     else
       # Since we've now successfully retrieved information on a user account, we'll either look up or save this user in our
       # database.
