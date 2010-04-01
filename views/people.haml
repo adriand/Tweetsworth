@@ -1,7 +1,0 @@
-- @people.each do |person|
-  = person.name
-  \-
-  = person.followers_count.to_s + " followers"
-  \-
-  %a{:href => "http://twitter.com/home/?status=" + CGI::escape("@#{person.screen_name} we've reworked our algorithm & produced a new, more accurate valuation for you: http://tweetsworth.com/g/#{person.screen_name}"), :target => "_"} Tweet them
-  %br/
