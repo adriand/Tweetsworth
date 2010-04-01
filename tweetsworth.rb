@@ -95,18 +95,26 @@ post '/value' do
   end
 end
 
+get '/big_list' do
+  @people = Person.all
+  haml :people
+end
+
 # use Sinatra's splat functionality to parse out the nature we're dealing with
 # this allows us to provide working links to profiles
 get '*/:screen_name' do
-  if params[:splat].first == "/g"
-    session[:nature] = "good"
-  else
-    session[:nature] = "evil"
+  # TODO: fix this up
+  unless params[:screen_name] == "favicon.ico"
+    if params[:splat].first == "/g"
+      session[:nature] = "good"
+    else
+      session[:nature] = "evil"
+    end
+    @person = Person.first(:screen_name => params[:screen_name])
+    @page_title = @person.name
+    @js = erb :person_js
+    haml :person
   end
-  @person = Person.first(:screen_name => params[:screen_name])
-  @page_title = @person.name
-  @js = erb :person_js
-  haml :person  
 end
 
 not_found do
