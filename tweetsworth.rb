@@ -43,7 +43,7 @@ DataMapper.auto_upgrade!
 enable :sessions
 
 get '/' do
-  session[:nature] = %w[ evil good ].random unless session[:nature]
+  session[:nature] = "evil" unless session[:nature]
   @recent = Person.all(:limit => 10, :order => [ :created_at.desc ])
   @top = Person.all(:limit => 10, :order => [ :followers_count.desc ])
   haml :index
