@@ -95,11 +95,6 @@ post '/value' do
   end
 end
 
-get '/big_list' do
-  @people = Person.all
-  haml :people
-end
-
 # use Sinatra's splat functionality to parse out the nature we're dealing with
 # this allows us to provide working links to profiles
 get '*/:screen_name' do
