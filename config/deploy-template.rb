@@ -2,8 +2,8 @@ default_run_options[:pty] = true
 set :application, "tweetsworth" # The name of the application
 set :repository,  "git@github.com:adriand/Tweetsworth.git" # Path to the Git Repo
 set :scm, "git"
-set :scm_passphrase, "9shwartz90005"
-set :user, "deploy"
+set :scm_passphrase, "PASSPHRASE"
+set :user, "USER"
 set :deploy_via, :remote_cache
 
 set :deploy_to, "/var/apps/#{application}"
